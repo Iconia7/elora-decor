@@ -4,6 +4,7 @@ import {
   Heart, Camera, Sparkles, Flower, 
   Instagram, Phone, ArrowRight, Menu, X, Star, Check,Quote, Minus, Plus, Calculator
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const EloraDecor = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -141,6 +142,20 @@ const EloraDecor = () => {
 
   return (
     <div className="min-h-screen bg-[#FDFCF8] text-gray-800 font-sans selection:bg-rose-200">
+
+      {/* --- SEO CONFIGURATION --- */}
+    <Helmet>
+      <title>Elora Décor | Affordable Campus Event Styling & Balloons</title>
+      <meta name="description" content="Transform your campus events with Elora Décor. We offer affordable balloon artistry, satin flowers, photo booths, and room styling for birthdays & proposals." />
+      <meta name="keywords" content="Elora Decor, campus events, balloon garlands Kenya, student decor, proposal setup, birthday styling, satin flowers, photo booth, affordable decor" />
+      
+      {/* Social Media Previews (WhatsApp/Instagram) */}
+      <meta property="og:title" content="Elora Décor | Beautiful Moments on a Budget" />
+      <meta property="og:description" content="Planning a birthday or proposal? Get premium styling, balloons, and photo booths starting from KES 1,500." />
+      <meta property="og:image" content="https://images.unsplash.com/photo-1530103862676-de3c9a59af38?auto=format&fit=crop&q=80&w=1200" />
+      <meta property="og:url" content="https://elora-decor.vercel.app/" />
+      <meta property="og:type" content="website" />
+    </Helmet>
       
       {/* --- NAVBAR --- */}
       <nav className="fixed top-0 w-full z-50 bg-[#FDFCF8]/80 backdrop-blur-md border-b border-rose-100">
