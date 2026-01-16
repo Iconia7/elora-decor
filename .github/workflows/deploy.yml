@@ -3,14 +3,14 @@ name: Deploy Elora Decor to VPS
 on:
   push:
     branches:
-      - main # Changed from master to main
+      - main  # Matches your new branch name
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4 # Updated to latest version
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -24,7 +24,7 @@ jobs:
         run: npm run build
 
       - name: Copy Build to VPS
-        uses: appleboy/scp-action@v0.1.7 # Updated version
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -34,7 +34,7 @@ jobs:
           strip_components: 1
 
       - name: Move Build to Nginx Root
-        uses: appleboy/ssh-action@v1.0.3 # Updated version
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -44,4 +44,5 @@ jobs:
             sudo rm -rf /var/www/elora_decor/*
             sudo mv /var/www/elora_decor_temp/* /var/www/elora_decor/
             sudo rm -rf /var/www/elora_decor_temp
+            # Ensure permissions are correct for Nginx
             sudo chown -R www-data:www-data /var/www/elora_decor
